@@ -1,1 +1,0 @@
-# TransitOps-Smart-Transport-Operations-Platform_odoo
