@@ -452,7 +452,7 @@ input, select, textarea { font-family: inherit; font-size: inherit; }
   z-index: 1000;
   animation: fadeIn 0.25s ease;
 }
-.modal-overlay.show { display: flex; }
+.modal-overlay.active { display: flex; }
 .modal-content {
   background: var(--bg-card);
   border-radius: 12px;
