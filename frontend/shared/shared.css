@@ -7,18 +7,18 @@
 
 /* --- CSS Variables --- */
 :root {
-  --bg-primary: #F8FAFC;
+  --bg-primary: #FAF8F5;
   --bg-sidebar: #1E293B;
   --bg-card: #FFFFFF;
-  --bg-hover: #F1F5F9;
-  --text-primary: #0F172A;
+  --bg-hover: #F5F2EB;
+  --text-primary: #1E293B;
   --text-secondary: #475569;
   --text-muted: #94A3B8;
   --text-white: #FFFFFF;
-  --border-color: #E2E8F0;
-  --accent: #4F46E5;
-  --accent-hover: #4338CA;
-  --accent-light: #EEF2FF;
+  --border-color: #E8E2DA;
+  --accent: #1E293B;
+  --accent-hover: #0F172A;
+  --accent-light: #F5F2EB;
   --success: #10B981;
   --success-bg: #ECFDF5;
   --warning: #F59E0B;
@@ -104,7 +104,7 @@ input, select, textarea { font-family: inherit; font-size: inherit; }
   color: rgba(255,255,255,0.95);
 }
 .sidebar-link.active {
-  background-color: var(--accent);
+  background-color: rgba(255, 255, 255, 0.12);
   color: var(--text-white);
   font-weight: 600;
 }
@@ -263,7 +263,7 @@ input, select, textarea { font-family: inherit; font-size: inherit; }
 }
 .form-control:focus {
   border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(79,70,229,0.1);
+  box-shadow: 0 0 0 3px rgba(30, 41, 59, 0.1);
 }
 
 /* --- Tables --- */
@@ -304,7 +304,7 @@ input, select, textarea { font-family: inherit; font-size: inherit; }
 }
 .input-search:focus {
   border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(79,70,229,0.1);
+  box-shadow: 0 0 0 3px rgba(30, 41, 59, 0.1);
 }
 .select-filter {
   padding: 8px 12px;
@@ -319,7 +319,7 @@ input, select, textarea { font-family: inherit; font-size: inherit; }
 }
 .select-filter:focus {
   border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(79,70,229,0.1);
+  box-shadow: 0 0 0 3px rgba(30, 41, 59, 0.1);
 }
 .table-wrapper {
   border: 1px solid var(--border-color);
