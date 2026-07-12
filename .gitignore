@@ -5,7 +5,7 @@ __pycache__/
 *.pyd
 
 # Databases
-db.sqlite3
+# db.sqlite3
 
 # Portable Git
 mingit/
