@@ -539,3 +539,28 @@ input, select, textarea { font-family: inherit; font-size: inherit; }
   .input-search { min-width: 200px; }
   .form-group-row { flex-direction: column; }
 }
+
+/* --- Detail Grid (Premium Metadata Display) --- */
+.detail-grid {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 14px 20px;
+  align-items: center;
+  padding: 8px 0;
+}
+.detail-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid rgba(232, 226, 218, 0.5);
+  padding-bottom: 6px;
+}
+.detail-value {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+  border-bottom: 1px solid rgba(232, 226, 218, 0.5);
+  padding-bottom: 6px;
+}

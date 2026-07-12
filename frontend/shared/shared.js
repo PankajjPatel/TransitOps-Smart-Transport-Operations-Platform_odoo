@@ -286,7 +286,8 @@ function openDetailsModal(type, id) {
   let gridHTML = `<div class="detail-grid">`;
   const keyLabels = { id: "Record ID", plate: "Plate Number", make: "Manufacturer", model: "Model Name", type: "Vehicle Type", year: "Manufacture Year", status: "Operational Status", name: "Full Name", license: "License Code", phone: "Phone Line", vehicleId: "Vehicle ID Reference", driverId: "Driver ID Reference", vehiclePlate: "Vehicle Assigned", driverName: "Driver Assigned", origin: "Origin Terminal", destination: "Destination Hub", cost: "Total Value / Fee", date: "Logged Date", description: "Detailed Description", liters: "Volume Filled (L)", provider: "Gas Provider Name", category: "Cost Category", email: "Email Account", role: "Platform Role" };
   Object.keys(record).forEach(key => {
-    const label = keyLabels[key] || key;
+    if (key === "id" || !keyLabels[key]) return;
+    const label = keyLabels[key];
     let val = record[key];
     if (key === "cost" || key === "amount") val = formatCurrency(val);
     else if (key === "status") val = `<span class="status-pill status-${val.toLowerCase()}">${val.replace("_", " ")}</span>`;
