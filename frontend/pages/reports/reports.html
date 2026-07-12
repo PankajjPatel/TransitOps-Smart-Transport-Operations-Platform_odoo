@@ -49,32 +49,50 @@
       </header>
       <div id="page-reports" class="page-container active">
         <!-- Report filter header -->
-        <div class="reports-controls">
-          <div class="form-group" style="margin-bottom:0;flex:1;min-width:180px;">
+        <div class="reports-controls" style="display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-end; margin-bottom: 24px;">
+          <div class="form-group" style="margin-bottom:0;flex:1.5;min-width:180px;">
+            <label class="form-label">Report Type</label>
+            <select class="select-filter" style="width:100%;" id="report-type-select">
+              <option value="summary">Operational Summary (Vehicles)</option>
+              <option value="vehicles">Vehicle Registry Report</option>
+              <option value="drivers">Driver Directory Report</option>
+              <option value="trips">Trip Dispatch Report</option>
+              <option value="fuel">Fuel Consumption Report</option>
+              <option value="maintenance">Maintenance Log Report</option>
+              <option value="expenses">Expense Registry Report</option>
+            </select>
+          </div>
+          <div class="form-group" style="margin-bottom:0;flex:1;min-width:140px;">
             <label class="form-label">Report Range</label>
             <select class="select-filter" style="width:100%;" id="report-date-range">
               <option value="this-month">This Month</option>
               <option value="last-month">Last Month</option>
               <option value="last-6-months">Last 6 Months</option>
               <option value="this-year">This Year</option>
+              <option value="all-time" selected>All Time</option>
             </select>
           </div>
-          <div class="form-group" style="margin-bottom:0;flex:1;min-width:180px;">
-            <label class="form-label">Target Fleet Component</label>
+          <div class="form-group" style="margin-bottom:0;flex:1;min-width:140px;">
+            <label class="form-label">Target Vehicle</label>
             <select class="select-filter" style="width:100%;" id="report-vehicle-select">
               <option value="ALL">All Vehicles</option>
             </select>
           </div>
-          <button class="btn btn-primary" id="btn-generate-report" style="height:38px;">
-            <i data-lucide="refresh-cw"></i> Update Reports
-          </button>
-          <button class="btn btn-secondary" id="btn-export-report" style="height:38px;">
-            <i data-lucide="download"></i> Export CSV
-          </button>
+          <div style="display: flex; gap: 10px;">
+            <button class="btn btn-primary" id="btn-generate-report" style="height:38px;">
+              <i data-lucide="refresh-cw"></i> Update
+            </button>
+            <button class="btn btn-secondary" id="btn-export-report" style="height:38px;">
+              <i data-lucide="download"></i> CSV
+            </button>
+            <button class="btn btn-secondary" id="btn-export-pdf" style="height:38px;">
+              <i data-lucide="file-text"></i> PDF
+            </button>
+          </div>
         </div>
 
         <!-- Analytical Widgets -->
-        <div class="reports-dashboard-grid">
+        <div class="reports-dashboard-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 24px;">
           <div class="card widget-card">
             <div class="widget-icon-container"><i data-lucide="droplet"></i></div>
             <div class="widget-details">
@@ -106,20 +124,12 @@
         </div>
 
         <!-- Analytical Tables / Summary Lists -->
-        <div style="margin-top:28px;">
-          <h3 style="font-size:16px;font-weight:600;margin-bottom:16px;">Operational Summary Breakdown</h3>
+        <div style="margin-top: 28px;">
+          <h3 style="font-size:16px;font-weight:700;margin-bottom:16px;" id="reports-table-heading">Operational Summary Breakdown</h3>
           <div class="table-wrapper">
             <table class="custom-table" id="reports-summary-table">
               <thead>
-                <tr>
-                  <th>Vehicle</th>
-                  <th>Make / Model</th>
-                  <th>Total Trips</th>
-                  <th>Maintenance Cost</th>
-                  <th>Fuel Cost</th>
-                  <th>Other Expenses</th>
-                  <th>Total Cost</th>
-                </tr>
+                <!-- Populated via JS -->
               </thead>
               <tbody>
                 <!-- Populated via JS -->

@@ -48,131 +48,107 @@
         </div>
       </header>
       <div id="page-settings" class="page-container active">
-        <div class="settings-grid">
-          <!-- Sidebar for Settings Sub-panes -->
-          <nav class="settings-nav">
-            <div class="settings-nav-item active" data-pane="settings-general">
-              <i data-lucide="globe"></i> General Settings
-            </div>
-            <div class="settings-nav-item" data-pane="settings-profile">
-              <i data-lucide="user"></i> Company Profile
-            </div>
-            <div class="settings-nav-item" data-pane="settings-notifications">
-              <i data-lucide="bell"></i> Notifications
-            </div>
-            <div class="settings-nav-item" data-pane="settings-security">
-              <i data-lucide="lock"></i> Security & Authentication
-            </div>
-          </nav>
+        <div style="max-width: 800px; margin: 0 auto; width: 100%; display: flex; flex-direction: column; gap: 24px;">
+          
+          <!-- GENERAL Section -->
+          <div class="card" style="padding: 24px;">
+            <h3 style="font-size: 14px; font-weight: 700; color: var(--text-color); margin-bottom: 20px; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid var(--border-color); padding-bottom: 8px;">General</h3>
+            <form id="form-settings-general">
+              <div class="form-group" style="margin-bottom: 16px;">
+                <label class="form-label" style="font-weight: 600; text-transform: uppercase; font-size: 11px; color: var(--text-muted);">Depot Name</label>
+                <input type="text" class="form-control" id="settings-platform-name" value="Gandhinagar Depot GJ14" required>
+              </div>
+              <div class="form-group-row" style="display: flex; gap: 12px; margin-bottom: 20px;">
+                <div class="form-group" style="flex: 1;">
+                  <label class="form-label" style="font-weight: 600; text-transform: uppercase; font-size: 11px; color: var(--text-muted);">Currency</label>
+                  <select class="form-control" id="settings-currency">
+                    <option value="INR" selected>INR (Rs)</option>
+                    <option value="USD">USD ($)</option>
+                    <option value="EUR">EUR (€)</option>
+                  </select>
+                </div>
+                <div class="form-group" style="flex: 1;">
+                  <label class="form-label" style="font-weight: 600; text-transform: uppercase; font-size: 11px; color: var(--text-muted);">Distance Unit</label>
+                  <select class="form-control" id="settings-timezone">
+                    <option value="GMT+5:30" selected>Kilometers</option>
+                    <option value="GMT+0">Miles</option>
+                  </select>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary" style="background-color: #3b82f6; color: white; border: none; font-weight: 600; padding: 10px 24px; border-radius: 8px;">Save changes</button>
+            </form>
+          </div>
 
-          <!-- Content Panes -->
-          <div class="settings-content-wrapper">
-            <!-- General Settings Pane -->
-            <div class="settings-content-pane active" id="settings-general">
-              <h3 class="settings-pane-title">General Platform Settings</h3>
-              <p class="settings-pane-subtitle">Configure regional parameters, date formatting, and system parameters.</p>
-              
-              <form id="form-settings-general">
-                <div class="form-group">
-                  <label class="form-label">Platform Name</label>
-                  <input type="text" class="form-control" id="settings-platform-name" value="TransitOps" required>
+          <!-- EMAIL (SMTP) Section -->
+          <div class="card" style="padding: 24px;">
+            <h3 style="font-size: 14px; font-weight: 700; color: var(--text-color); margin-bottom: 20px; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid var(--border-color); padding-bottom: 8px;">Email (SMTP) Configuration</h3>
+            <form id="form-settings-email">
+              <div class="form-group-row" style="display: flex; gap: 12px; margin-bottom: 12px;">
+                <div class="form-group" style="flex: 2;">
+                  <label class="form-label" style="font-size: 11px; font-weight: 600; text-transform: uppercase; color: var(--text-muted);">SMTP Host</label>
+                  <input type="text" class="form-control" id="settings-smtp-host" placeholder="smtp.gmail.com" required>
                 </div>
-                <div class="form-group-row">
-                  <div class="form-group">
-                    <label class="form-label">System Timezone</label>
-                    <select class="form-control" id="settings-timezone">
-                      <option value="GMT-5">Eastern Time (US & Canada) (GMT-5)</option>
-                      <option value="GMT+0">UTC / GMT</option>
-                      <option value="GMT+5:30" selected>India Standard Time (IST) (GMT+5:30)</option>
-                      <option value="GMT+1">Central European Time (CET) (GMT+1)</option>
-                    </select>
-                  </div>
-                  <div class="form-group">
-                    <label class="form-label">Currency Code</label>
-                    <select class="form-control" id="settings-currency">
-                      <option value="USD" selected>USD ($) - US Dollar</option>
-                      <option value="EUR">EUR (€) - Euro</option>
-                      <option value="INR">INR (₹) - Indian Rupee</option>
-                    </select>
-                  </div>
+                <div class="form-group" style="flex: 1;">
+                  <label class="form-label" style="font-size: 11px; font-weight: 600; text-transform: uppercase; color: var(--text-muted);">SMTP Port</label>
+                  <input type="number" class="form-control" id="settings-smtp-port" placeholder="587" required>
                 </div>
-                <div class="form-group">
-                  <label class="form-label">Active Theme Mode (Enforced)</label>
-                  <input type="text" class="form-control" value="Light Theme Only (Enterprise Compliant)" readonly disabled style="background-color: var(--bg-hover);">
-                  <span style="font-size: 11px; color: var(--text-muted);">This application is strictly locked to Enterprise Light Theme containing Navy and White parameters.</span>
+              </div>
+              <div class="form-group-row" style="display: flex; gap: 12px; margin-bottom: 12px;">
+                <div class="form-group" style="flex: 1;">
+                  <label class="form-label" style="font-size: 11px; font-weight: 600; text-transform: uppercase; color: var(--text-muted);">SMTP User</label>
+                  <input type="text" class="form-control" id="settings-smtp-user" placeholder="user@gmail.com" required>
                 </div>
-                <button type="submit" class="btn btn-primary" style="margin-top: 10px;">Save General Settings</button>
-              </form>
-            </div>
+                <div class="form-group" style="flex: 1;">
+                  <label class="form-label" style="font-size: 11px; font-weight: 600; text-transform: uppercase; color: var(--text-muted);">SMTP Password</label>
+                  <input type="password" class="form-control" id="settings-smtp-pass" placeholder="••••••••" required>
+                </div>
+              </div>
+              <div class="form-group" style="margin-bottom: 16px;">
+                <label class="form-label" style="font-size: 11px; font-weight: 600; text-transform: uppercase; color: var(--text-muted);">Sender Email Address</label>
+                <input type="email" class="form-control" id="settings-smtp-sender" placeholder="ops@transitops.in" required>
+              </div>
+              <div class="form-group" style="display: flex; align-items: center; gap: 10px; margin-bottom: 20px;">
+                <input type="checkbox" id="settings-smtp-tls" style="width: 16px; height: 16px; cursor: pointer;">
+                <label for="settings-smtp-tls" style="font-weight: 500; cursor: pointer; font-size: 13px;">Use Secure Protocol (TLS)</label>
+              </div>
+              <div style="display: flex; gap: 12px;">
+                <button type="submit" class="btn btn-primary" style="background-color: #3b82f6; color: white; border: none; font-weight: 600; padding: 10px 20px; border-radius: 8px;">Save SMTP</button>
+                <button type="button" class="btn btn-secondary" id="btn-test-email" style="font-weight: 600; padding: 10px 20px; border-radius: 8px;">
+                  <i data-lucide="send" style="width:14px; height:14px; vertical-align:middle; margin-right:4px;"></i> Test Email
+                </button>
+              </div>
+            </form>
+          </div>
 
-            <!-- Profile Settings Pane -->
-            <div class="settings-content-pane" id="settings-profile">
-              <h3 class="settings-pane-title">Company Profile</h3>
-              <p class="settings-pane-subtitle">Manage company details displayed on system receipts and reports.</p>
-              
-              <form id="form-settings-profile">
-                <div class="form-group">
-                  <label class="form-label">Company Name</label>
-                  <input type="text" class="form-control" id="settings-company-name" value="TransitOps Fleet Solutions" required>
+          <!-- SECURITY & BACKUP Section -->
+          <div class="card" style="padding: 24px;">
+            <h3 style="font-size: 14px; font-weight: 700; color: var(--text-color); margin-bottom: 20px; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid var(--border-color); padding-bottom: 8px;">Security & Backup</h3>
+            <form id="form-settings-security" style="margin-bottom: 20px;">
+              <div class="form-group-row" style="display: flex; gap: 12px; margin-bottom: 12px;">
+                <div class="form-group" style="flex: 1;">
+                  <label class="form-label" style="font-size: 11px; font-weight: 600; text-transform: uppercase; color: var(--text-muted);">Current Password</label>
+                  <input type="password" class="form-control" id="settings-security-old" required>
                 </div>
-                <div class="form-group">
-                  <label class="form-label">Support Email Address</label>
-                  <input type="email" class="form-control" id="settings-company-email" value="ops@transitops.com" required>
+                <div class="form-group" style="flex: 1;">
+                  <label class="form-label" style="font-size: 11px; font-weight: 600; text-transform: uppercase; color: var(--text-muted);">New Password</label>
+                  <input type="password" class="form-control" id="settings-security-new" required>
                 </div>
-                <div class="form-group">
-                  <label class="form-label">Office Address</label>
-                  <textarea class="form-control" id="settings-company-address" required>100 Enterprise Way, Suite 400, Fleet City</textarea>
-                </div>
-                <button type="submit" class="btn btn-primary" style="margin-top: 10px;">Update Profile</button>
-              </form>
-            </div>
-
-            <!-- Notifications Pane -->
-            <div class="settings-content-pane" id="settings-notifications">
-              <h3 class="settings-pane-title">Notification Settings</h3>
-              <p class="settings-pane-subtitle">Enable system triggers for email and dashboard notifications.</p>
-              
-              <form id="form-settings-notifications">
-                <div class="form-group" style="display: flex; align-items: center; gap: 10px;">
-                  <input type="checkbox" id="settings-notify-maintenance" checked style="width: 16px; height: 16px; cursor: pointer;">
-                  <label for="settings-notify-maintenance" style="font-weight: 500; cursor: pointer;">Notify when vehicle enters maintenance</label>
-                </div>
-                <div class="form-group" style="display: flex; align-items: center; gap: 10px;">
-                  <input type="checkbox" id="settings-notify-trip" checked style="width: 16px; height: 16px; cursor: pointer;">
-                  <label for="settings-notify-trip" style="font-weight: 500; cursor: pointer;">Notify dispatchers when trip status changes</label>
-                </div>
-                <div class="form-group" style="display: flex; align-items: center; gap: 10px;">
-                  <input type="checkbox" id="settings-notify-expenses" style="width: 16px; height: 16px; cursor: pointer;">
-                  <label for="settings-notify-expenses" style="font-weight: 500; cursor: pointer;">Require approval for expenses over $500</label>
-                </div>
-                <button type="submit" class="btn btn-primary" style="margin-top: 10px;">Save Notifications Preferences</button>
-              </form>
-            </div>
-
-            <!-- Security Pane -->
-            <div class="settings-content-pane" id="settings-security">
-              <h3 class="settings-pane-title">Security & Password</h3>
-              <p class="settings-pane-subtitle">Manage administrative passwords and platform security levels.</p>
-              
-              <form id="form-settings-security">
-                <div class="form-group">
-                  <label class="form-label">Current Password</label>
-                  <input type="password" class="form-control" placeholder="••••••••" required>
-                </div>
-                <div class="form-group-row">
-                  <div class="form-group">
-                    <label class="form-label">New Password</label>
-                    <input type="password" class="form-control" placeholder="••••••••" required>
-                  </div>
-                  <div class="form-group">
-                    <label class="form-label">Confirm New Password</label>
-                    <input type="password" class="form-control" placeholder="••••••••" required>
-                  </div>
-                </div>
-                <button type="submit" class="btn btn-primary" style="margin-top: 10px;">Update Password</button>
-              </form>
+              </div>
+              <div class="form-group" style="margin-bottom: 16px;">
+                <label class="form-label" style="font-size: 11px; font-weight: 600; text-transform: uppercase; color: var(--text-muted);">Confirm Password</label>
+                <input type="password" class="form-control" id="settings-security-confirm" required>
+              </div>
+              <button type="submit" class="btn btn-primary" style="background-color: #3b82f6; color: white; border: none; font-weight: 600; padding: 10px 20px; border-radius: 8px;">Change Password</button>
+            </form>
+            <div style="border-top: 1px solid var(--border-color); padding-top: 16px; display: flex; justify-content: space-between; align-items: center;">
+              <div>
+                <div style="font-weight: 600; font-size: 13px; color: var(--text-color);">Database Export Backup</div>
+                <div style="font-size: 11px; color: var(--text-muted);" id="settings-backup-last-date-display">Last backup: Never</div>
+              </div>
+              <button type="button" class="btn btn-secondary" id="btn-trigger-backup" style="font-weight: 600; padding: 8px 16px; border-radius: 8px;">Trigger Backup</button>
             </div>
           </div>
+
         </div>
       </div>
     </main>

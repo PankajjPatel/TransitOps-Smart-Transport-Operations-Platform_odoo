@@ -36,6 +36,29 @@
   --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* --- Dark Theme Variables --- */
+body.dark-theme {
+  --bg-primary: #0f172a;
+  --bg-sidebar: #020617;
+  --bg-card: #1e293b;
+  --bg-hover: #334155;
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #64748b;
+  --border-color: #334155;
+  --accent: #f8fafc;
+  --accent-hover: #ffffff;
+  --accent-light: #334155;
+  --success: #10b981;
+  --success-bg: rgba(16, 185, 129, 0.1);
+  --warning: #f59e0b;
+  --warning-bg: rgba(245, 158, 11, 0.1);
+  --danger: #ef4444;
+  --danger-bg: rgba(239, 68, 68, 0.1);
+  --info: #3b82f6;
+  --info-bg: rgba(59, 130, 246, 0.1);
+}
+
 /* --- Reset & Base --- */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { font-size: 14px; scroll-behavior: smooth; }
@@ -362,29 +385,38 @@ input, select, textarea { font-family: inherit; font-size: inherit; }
 .custom-table tbody tr:last-child td { border-bottom: none; }
 
 /* --- Status Tags --- */
-.status-tag {
+.status-pill, .status-tag {
   display: inline-flex;
-  padding: 3px 10px;
+  padding: 4px 10px;
   border-radius: 9999px;
-  font-size: 11px;
-  font-weight: 600;
+  font-size: 10px;
+  font-weight: 700;
   letter-spacing: 0.3px;
+  text-transform: uppercase;
 }
-.status-active, .status-on-duty, .status-completed {
+.status-active, .status-on_duty, .status-on-duty, .status-completed, .status-paid, .status-approved {
   background: var(--success-bg);
   color: var(--success);
 }
-.status-available, .status-off-duty {
+.status-available, .status-off-duty, .status-off_duty {
   background: var(--info-bg);
   color: var(--info);
 }
-.status-maintenance, .status-in-progress, .status-pending {
+.status-maintenance, .status-in-progress, .status-in_progress, .status-pending, .status-scheduled {
   background: var(--warning-bg);
   color: var(--warning);
 }
-.status-inactive, .status-cancelled {
+.status-inactive, .status-cancelled, .status-suspended, .status-retired {
   background: var(--danger-bg);
   color: var(--danger);
+}
+.status-draft {
+  background: #F1F5F9;
+  color: #64748B;
+}
+.status-on_trip, .status-on-trip, .status-dispatched {
+  background: #E0F2FE;
+  color: #0284C7;
 }
 
 /* --- Action Buttons in Tables --- */
@@ -538,4 +570,29 @@ input, select, textarea { font-family: inherit; font-size: inherit; }
   .page-container { padding: 16px; }
   .input-search { min-width: 200px; }
   .form-group-row { flex-direction: column; }
+}
+
+/* --- Detail Grid (Premium Metadata Display) --- */
+.detail-grid {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 14px 20px;
+  align-items: center;
+  padding: 8px 0;
+}
+.detail-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid rgba(232, 226, 218, 0.5);
+  padding-bottom: 6px;
+}
+.detail-value {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+  border-bottom: 1px solid rgba(232, 226, 218, 0.5);
+  padding-bottom: 6px;
 }

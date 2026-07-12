@@ -28,21 +28,22 @@
         <button class="btn-landing-pill" id="btn-show-signup">Signup</button>
       </div>
     </header>
+
     <main class="landing-hero">
       <div class="hero-text-block">
         <h1 class="hero-heading">A platform for your<br><span class="underline-highlight">cool fleet operations</span></h1>
         <p class="hero-paragraph">Streamline dispatching, manage maintenance schedules, log fuel fill-ups, and track operational expenses in a clean, state-of-the-art enterprise workflow.</p>
         <div class="hero-button-row">
-          <button class="btn-hero-dark" id="btn-hero-cta">Call to action</button>
-          <button class="btn-hero-outline" id="btn-hero-sec">Secondary action</button>
+          <button class="btn-hero-dark" id="btn-hero-cta">Get Started</button>
+          <button class="btn-hero-outline" id="btn-hero-sec">Sign In</button>
         </div>
       </div>
       <div class="hero-graphics-block">
         <div class="deck-preview-container">
           <div class="preview-deck-title">Live Dispatch Status</div>
-          <div class="preview-metric-row"><span class="metric-circle circle-active"></span><div class="metric-desc"><span class="metric-label">NY-1102-K - Semi-Truck</span><span class="metric-sub">Active Transit (New York to Chicago)</span></div></div>
-          <div class="preview-metric-row"><span class="metric-circle circle-available"></span><div class="metric-desc"><span class="metric-label">CA-2204-F - Flatbed</span><span class="metric-sub">Available for Dispatch</span></div></div>
-          <div class="preview-metric-row"><span class="metric-circle circle-maintenance"></span><div class="metric-desc"><span class="metric-label">IL-7703-C - Box Truck</span><span class="metric-sub">Undergoing Engine Overhaul</span></div></div>
+          <div class="preview-metric-row"><span class="metric-circle circle-active"></span><div class="metric-desc"><span class="metric-label">MP09AB1234 - Tata Prima</span><span class="metric-sub">Active Transit (Indore to Bhopal)</span></div></div>
+          <div class="preview-metric-row"><span class="metric-circle circle-available"></span><div class="metric-desc"><span class="metric-label">MH12XY4567 - Ashok Leyland</span><span class="metric-sub">Available for Dispatch</span></div></div>
+          <div class="preview-metric-row"><span class="metric-circle circle-maintenance"></span><div class="metric-desc"><span class="metric-label">DL01CD9876 - Eicher Pro</span><span class="metric-sub">Undergoing Routine Service</span></div></div>
         </div>
       </div>
     </main>
@@ -52,15 +53,30 @@
   <div id="login-modal-overlay" class="auth-modal-overlay">
     <div class="auth-card">
       <div class="auth-card-header">
-        <h3 class="auth-title">Sign in to TransitOps</h3>
+        <div class="auth-icon-wrapper">
+          <i data-lucide="log-in"></i>
+        </div>
+        <h3 class="auth-title">Sign in with credentials</h3>
+        <p class="auth-subtitle">Access your fleet operations workspace</p>
         <button class="btn-close-auth" id="btn-close-login"><i data-lucide="x"></i></button>
       </div>
       <div class="auth-card-body">
-        <div class="auth-alert"><strong>Demo Login Credentials:</strong><br>Email: <code>admin@transitops.com</code><br>Password: <code>admin123</code></div>
         <form id="login-form">
-          <div class="form-group"><label class="form-label" for="login-email">Email Address</label><input type="email" id="login-email" class="form-control" placeholder="name@company.com" required value="admin@transitops.com"></div>
-          <div class="form-group" style="margin-bottom:24px;"><label class="form-label" for="login-password">Password</label><input type="password" id="login-password" class="form-control" placeholder="••••••••" required value="admin123"></div>
-          <button type="submit" class="btn btn-primary" style="width:100%;height:42px;font-weight:600;">Sign In</button>
+          <div class="form-group"><label class="form-label" for="login-email">Email Address / Username</label><input type="text" id="login-email" class="form-control" placeholder="name@company.com" required value="pankaj@transitops"></div>
+          <div class="form-group" style="margin-bottom:24px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+              <label class="form-label" for="login-password" style="margin:0;">Password</label>
+              <a href="#" class="auth-link" style="font-size:12px; font-weight:500; color:#64748b; text-decoration:none;">Forgot password?</a>
+            </div>
+            <div style="position: relative; display: flex; align-items: center; width: 100%;">
+              <input type="password" id="login-password" class="form-control" placeholder="••••••••" required value="Pankaj@123" style="padding-right: 40px; width: 100%; margin: 0;">
+              <button type="button" onclick="togglePasswordVisibility('login-password', this)" style="position: absolute; right: 4px; background: none; border: none; cursor: pointer; color: #64748b; display: flex; align-items: center; justify-content: center; height: 100%; padding: 0 8px;">
+                <i data-lucide="eye" style="width: 16px; height: 16px;"></i>
+              </button>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width:100%;height:46px;font-weight:600;border-radius:12px;">Get Started</button>
+          
         </form>
       </div>
     </div>
@@ -70,16 +86,38 @@
   <div id="signup-modal-overlay" class="auth-modal-overlay">
     <div class="auth-card">
       <div class="auth-card-header">
+        <div class="auth-icon-wrapper">
+          <i data-lucide="user-plus"></i>
+        </div>
         <h3 class="auth-title">Create your account</h3>
+        <p class="auth-subtitle">Join the TransitOps logistics workspace</p>
         <button class="btn-close-auth" id="btn-close-signup"><i data-lucide="x"></i></button>
       </div>
       <div class="auth-card-body">
         <form id="signup-form">
-          <div class="form-group"><label class="form-label" for="signup-name">Full Name</label><input type="text" id="signup-name" class="form-control" placeholder="e.g. John Doe" required></div>
+          <div style="margin-top: 10px;"></div>
+
+          <div class="form-group"><label class="form-label" for="signup-name">Full Name</label><input type="text" id="signup-name" class="form-control" placeholder="e.g. Rahul Sharma" required></div>
           <div class="form-group"><label class="form-label" for="signup-email">Email Address</label><input type="email" id="signup-email" class="form-control" placeholder="name@company.com" required></div>
-          <div class="form-group"><label class="form-label" for="signup-password">Password</label><input type="password" id="signup-password" class="form-control" placeholder="Create a strong password" required></div>
-          <div class="form-group" style="margin-bottom:24px;"><label class="form-label" for="signup-role">Account Role</label><select id="signup-role" class="form-control"><option value="Dispatcher">Dispatcher</option><option value="Administrator">Administrator</option><option value="Driver">Driver</option></select></div>
-          <button type="submit" class="btn btn-primary" style="width:100%;height:42px;font-weight:600;">Register Account</button>
+          <div class="form-group">
+            <label class="form-label" for="signup-password">Password</label>
+            <div style="position: relative; display: flex; align-items: center; width: 100%;">
+              <input type="password" id="signup-password" class="form-control" placeholder="Create a strong password" required style="padding-right: 40px; width: 100%; margin: 0;">
+              <button type="button" onclick="togglePasswordVisibility('signup-password', this)" style="position: absolute; right: 4px; background: none; border: none; cursor: pointer; color: #64748b; display: flex; align-items: center; justify-content: center; height: 100%; padding: 0 8px;">
+                <i data-lucide="eye" style="width: 16px; height: 16px;"></i>
+              </button>
+            </div>
+          </div>
+          <div class="form-group" style="margin-bottom:24px;">
+            <label class="form-label" for="signup-role">Account Role</label>
+            <select id="signup-role" class="form-control">
+              <option value="Dispatcher">Dispatcher</option>
+              <option value="Fleet Manager">Fleet Manager</option>
+              <option value="Safety Officer">Safety Officer</option>
+              <option value="Financial Analyst">Financial Analyst</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width:100%;height:46px;font-weight:600;border-radius:12px;">Register Account</button>
         </form>
       </div>
     </div>

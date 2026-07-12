@@ -34,9 +34,19 @@ urlpatterns = [
     path("api/expenses/<int:pk>", views.api_expense_detail, name="api_expense_detail"),
 
     # Users CRUD
+    # Users CRUD
     path("api/users", views.api_users, name="api_users"),
     path("api/users/<int:pk>", views.api_user_detail, name="api_user_detail"),
 
+    # Change Password
+    path("api/change-password", views.api_change_password, name="api_change_password"),
+
+    # Notifications CRUD
+    path("api/notifications", views.api_notifications, name="api_notifications"),
+    path("api/notifications/<int:pk>", views.api_notification_detail, name="api_notification_detail"),
+
     # Settings
     path("api/settings", views.api_settings, name="api_settings"),
+    path("api/send-monthly-report", views.api_send_monthly_report, name="api_send_monthly_report"),
+    path("api/send-test-email", views.api_send_test_email, name="api_send_test_email"),
 ]

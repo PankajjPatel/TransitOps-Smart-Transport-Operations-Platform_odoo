@@ -1,11 +1,5 @@
 // TransitOps - Login Module
 window.addEventListener("DOMContentLoaded", () => {
-  // Check if already logged in
-  if (localStorage.getItem("transitops_logged_in") === "true") {
-    window.location.href = "../dashboard/dashboard.html";
-    return;
-  }
-
   lucide.createIcons();
 
   // Login Form
@@ -18,10 +12,19 @@ window.addEventListener("DOMContentLoaded", () => {
       const result = await res.json();
       if (res.ok && result.success) {
         localStorage.setItem("transitops_logged_in", "true");
+        localStorage.setItem("transitops_user_role", result.role);
+        localStorage.setItem("transitops_user_name", result.name || "User");
+        localStorage.setItem("transitops_user_email", result.email || email);
         showToast("Sign in successful. Welcome back!");
-        setTimeout(() => { window.location.href = "../dashboard/dashboard.html"; }, 500);
+        
+        let targetPage = "dashboard";
+        if (result.role === "Fleet Manager") targetPage = "vehicles";
+        else if (result.role === "Safety Officer") targetPage = "drivers";
+        else if (result.role === "Financial Analyst") targetPage = "fuel";
+        
+        setTimeout(() => { window.location.href = `../${targetPage}/${targetPage}.html`; }, 500);
       } else {
-        alert("Incorrect credentials. Please check details in the helper box.");
+        alert("Incorrect credentials. Please verify your email and password.");
       }
     } catch (err) { alert("Error connecting to login server."); }
   });
@@ -53,4 +56,6 @@ window.addEventListener("DOMContentLoaded", () => {
   document.getElementById("btn-close-signup").addEventListener("click", () => document.getElementById("signup-modal-overlay").classList.remove("active"));
   document.getElementById("btn-hero-cta").addEventListener("click", () => document.getElementById("signup-modal-overlay").classList.add("active"));
   document.getElementById("btn-hero-sec").addEventListener("click", () => document.getElementById("login-modal-overlay").classList.add("active"));
+
+
 });
