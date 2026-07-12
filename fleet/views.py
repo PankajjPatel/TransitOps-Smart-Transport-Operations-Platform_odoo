@@ -10,10 +10,12 @@ from .models import (
 )
 
 
+from django.shortcuts import redirect
+
 # ─── Page View ───────────────────────────────────────────────────────
 def index(request):
-    """Serve the single-page application template."""
-    return render(request, "fleet/index.html")
+    """Redirect to the static landing/login page."""
+    return redirect('/static/pages/login/login.html')
 
 
 # ─── Helper: parse JSON body ─────────────────────────────────────────

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TransitOps - Analytical Reports</title>
+  <link rel="stylesheet" href="../../shared/shared.css">
+  <link rel="stylesheet" href="reports.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+  <div id="toast-container" class="toast-container"></div>
+  <div class="app-container">
+  <aside class="sidebar">
+    <div class="sidebar-header"><i data-lucide="navigation" style="width:24px;height:24px;"></i><span class="sidebar-brand">TransitOps</span></div>
+    <ul class="sidebar-menu">
+      <li class="sidebar-item"><a class="sidebar-link" data-page="dashboard" href="../dashboard/dashboard.html"><i data-lucide="layout-dashboard"></i><span>Dashboard</span></a></li>
+      <li class="sidebar-item"><a class="sidebar-link" data-page="vehicles" href="../vehicles/vehicles.html"><i data-lucide="truck"></i><span>Vehicles</span></a></li>
+      <li class="sidebar-item"><a class="sidebar-link" data-page="drivers" href="../drivers/drivers.html"><i data-lucide="users"></i><span>Drivers</span></a></li>
+      <li class="sidebar-item"><a class="sidebar-link" data-page="trips" href="../trips/trips.html"><i data-lucide="route"></i><span>Trips</span></a></li>
+      <li class="sidebar-item"><a class="sidebar-link" data-page="maintenance" href="../maintenance/maintenance.html"><i data-lucide="wrench"></i><span>Maintenance</span></a></li>
+      <li class="sidebar-item"><a class="sidebar-link" data-page="fuel" href="../fuel/fuel.html"><i data-lucide="droplet"></i><span>Fuel Logs</span></a></li>
+      <li class="sidebar-item"><a class="sidebar-link" data-page="expenses" href="../expenses/expenses.html"><i data-lucide="banknote"></i><span>Expenses</span></a></li>
+      <li class="sidebar-item"><a class="sidebar-link active" data-page="reports" href="../reports/reports.html"><i data-lucide="bar-chart-3"></i><span>Reports & Analytics</span></a></li>
+      <li class="sidebar-item"><a class="sidebar-link" data-page="settings" href="../settings/settings.html"><i data-lucide="settings"></i><span>Settings</span></a></li>
+    </ul>
+    <div class="sidebar-footer"><span>TransitOps ERP v1.0</span></div>
+  </aside>
+    <main class="main-wrapper">
+      <header class="top-header">
+        <div class="header-title-container"><i data-lucide="bar-chart-3" class="page-title-icon" id="header-icon"></i><h1 class="page-title" id="header-title">Analytical Reports</h1></div>
+        <div class="header-actions">
+          <button class="btn-icon" title="Notifications" id="btn-notifications"><i data-lucide="bell"></i></button>
+          <div class="header-user-info"><div class="user-avatar" id="user-avatar-initials">GA</div><div class="user-meta"><span class="user-name" id="header-user-name">Girjesh Adarsh</span><span class="user-role" id="header-user-role">Administrator</span></div></div>
+          <button class="btn-icon" title="Log Out" id="btn-logout"><i data-lucide="log-out"></i></button>
+        </div>
+      </header>
+      <div id="page-reports" class="page-container active">
+        <div class="card" style="padding:40px;text-align:center;">
+          <i data-lucide="bar-chart-3" style="width:48px;height:48px;color:var(--accent);margin-bottom:16px;"></i>
+          <h2 style="font-size:20px;font-weight:700;margin-bottom:8px;">Analytical Reports</h2>
+          <p style="color:var(--text-muted);font-size:14px;">This module page is ready for development.</p>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script src="../../shared/shared.js"></script>
+  <script src="reports.js"></script>
+</body>
+</html>

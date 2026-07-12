@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TransitOps - Dashboard</title>
+  <link rel="stylesheet" href="../../shared/shared.css">
+  <link rel="stylesheet" href="dashboard.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+  <div id="toast-container" class="toast-container"></div>
+  <div class="app-container">
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <i data-lucide="navigation" style="width:24px;height:24px;"></i>
+      <span class="sidebar-brand">TransitOps</span>
+    </div>
+    <ul class="sidebar-menu">
+      <li class="sidebar-item"><a class="sidebar-link active" data-page="dashboard" href="../dashboard/dashboard.html"><i data-lucide="layout-dashboard"></i><span>Dashboard</span></a></li>
+      <li class="sidebar-item"><a class="sidebar-link" data-page="vehicles" href="../vehicles/vehicles.html"><i data-lucide="truck"></i><span>Vehicles</span></a></li>
+      <li class="sidebar-item"><a class="sidebar-link" data-page="drivers" href="../drivers/drivers.html"><i data-lucide="users"></i><span>Drivers</span></a></li>
+      <li class="sidebar-item"><a class="sidebar-link" data-page="trips" href="../trips/trips.html"><i data-lucide="route"></i><span>Trips</span></a></li>
+      <li class="sidebar-item"><a class="sidebar-link" data-page="maintenance" href="../maintenance/maintenance.html"><i data-lucide="wrench"></i><span>Maintenance</span></a></li>
+      <li class="sidebar-item"><a class="sidebar-link" data-page="fuel" href="../fuel/fuel.html"><i data-lucide="droplet"></i><span>Fuel Logs</span></a></li>
+      <li class="sidebar-item"><a class="sidebar-link" data-page="expenses" href="../expenses/expenses.html"><i data-lucide="banknote"></i><span>Expenses</span></a></li>
+      <li class="sidebar-item"><a class="sidebar-link" data-page="reports" href="../reports/reports.html"><i data-lucide="bar-chart-3"></i><span>Reports & Analytics</span></a></li>
+      <li class="sidebar-item"><a class="sidebar-link" data-page="settings" href="../settings/settings.html"><i data-lucide="settings"></i><span>Settings</span></a></li>
+    </ul>
+    <div class="sidebar-footer"><span>TransitOps ERP v1.0</span></div>
+  </aside>
+    <main class="main-wrapper">
+      <header class="top-header">
+        <div class="header-title-container">
+          <i data-lucide="layout-dashboard" class="page-title-icon" id="header-icon"></i>
+          <h1 class="page-title" id="header-title">Dashboard</h1>
+        </div>
+        <div class="header-actions">
+          <button class="btn-icon" title="Notifications" id="btn-notifications"><i data-lucide="bell"></i></button>
+          <div class="header-user-info">
+            <div class="user-avatar" id="user-avatar-initials">GA</div>
+            <div class="user-meta">
+              <span class="user-name" id="header-user-name">Girjesh Adarsh</span>
+              <span class="user-role" id="header-user-role">Administrator</span>
+            </div>
+          </div>
+          <button class="btn-icon" title="Log Out" id="btn-logout"><i data-lucide="log-out"></i></button>
+        </div>
+      </header>
+      <div id="page-dashboard" class="page-container active">
+        <!-- 9 Dashboard Widgets -->
+        <div class="dashboard-grid-widgets">
+          <div class="card widget-card"><div class="widget-icon-container"><i data-lucide="truck"></i></div><div class="widget-details"><span class="widget-label">Active Vehicles</span><span class="widget-value" id="widget-active-vehicles">0</span></div></div>
+          <div class="card widget-card"><div class="widget-icon-container"><i data-lucide="check-circle-2"></i></div><div class="widget-details"><span class="widget-label">Available Vehicles</span><span class="widget-value" id="widget-available-vehicles">0</span></div></div>
+          <div class="card widget-card"><div class="widget-icon-container"><i data-lucide="wrench"></i></div><div class="widget-details"><span class="widget-label">Vehicles in Maintenance</span><span class="widget-value" id="widget-maintenance-vehicles">0</span></div></div>
+          <div class="card widget-card"><div class="widget-icon-container"><i data-lucide="play-circle"></i></div><div class="widget-details"><span class="widget-label">Active Trips</span><span class="widget-value" id="widget-active-trips">0</span></div></div>
+          <div class="card widget-card"><div class="widget-icon-container"><i data-lucide="clock"></i></div><div class="widget-details"><span class="widget-label">Pending Trips</span><span class="widget-value" id="widget-pending-trips">0</span></div></div>
+          <div class="card widget-card"><div class="widget-icon-container"><i data-lucide="users"></i></div><div class="widget-details"><span class="widget-label">Drivers On Duty</span><span class="widget-value" id="widget-drivers-duty">0</span></div></div>
+          <div class="card widget-card"><div class="widget-icon-container"><i data-lucide="activity"></i></div><div class="widget-details"><span class="widget-label">Fleet Utilization</span><span class="widget-value" id="widget-fleet-utilization">0%</span></div></div>
+          <div class="card widget-card"><div class="widget-icon-container"><i data-lucide="banknote"></i></div><div class="widget-details"><span class="widget-label">Monthly Expenses</span><span class="widget-value" id="widget-monthly-expenses">$0</span></div></div>
+          <div class="card widget-card"><div class="widget-icon-container"><i data-lucide="gauge"></i></div><div class="widget-details"><span class="widget-label">Fuel Efficiency</span><span class="widget-value" id="widget-fuel-efficiency">0 km/L</span></div></div>
+        </div>
+        <!-- 3 Charts -->
+        <div class="dashboard-grid-charts">
+          <div class="card chart-card"><div class="chart-header"><h3 class="chart-title">Expenses Breakdown (Bar Chart)</h3></div><div class="chart-body" id="bar-chart-container"></div></div>
+          <div class="card chart-card"><div class="chart-header"><h3 class="chart-title">Expense Trend - Last 6 Months (Line Chart)</h3></div><div class="chart-body" id="line-chart-container"></div></div>
+          <div class="card chart-card"><div class="chart-header"><h3 class="chart-title">Fleet Allocation Status (Pie Chart)</h3></div><div class="chart-body" id="pie-chart-container" style="flex-direction:column;"></div></div>
+        </div>
+        <!-- Active Fleet Tables -->
+        <div style="margin-top:24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(400px,1fr));gap:24px;">
+          <div class="card" style="padding:20px;display:flex;flex-direction:column;">
+            <h3 style="font-size:15px;font-weight:600;margin-bottom:16px;display:flex;align-items:center;gap:8px;"><i data-lucide="truck" style="width:18px;height:18px;"></i>Active Vehicles List</h3>
+            <div class="table-wrapper" style="box-shadow:none;border-radius:6px;margin-bottom:0;max-height:250px;overflow-y:auto;">
+              <table class="custom-table" id="dashboard-active-vehicles-table"><thead><tr><th>Plate</th><th>Make / Model</th><th>Type</th></tr></thead><tbody></tbody></table>
+            </div>
+          </div>
+          <div class="card" style="padding:20px;display:flex;flex-direction:column;">
+            <h3 style="font-size:15px;font-weight:600;margin-bottom:16px;display:flex;align-items:center;gap:8px;"><i data-lucide="route" style="width:18px;height:18px;"></i>Active Trips In Progress</h3>
+            <div class="table-wrapper" style="box-shadow:none;border-radius:6px;margin-bottom:0;max-height:250px;overflow-y:auto;">
+              <table class="custom-table" id="dashboard-active-trips-table"><thead><tr><th>Route</th><th>Vehicle Plate</th><th>Driver Name</th></tr></thead><tbody></tbody></table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script src="../../shared/shared.js"></script>
+  <script src="dashboard.js"></script>
+</body>
+</html>
