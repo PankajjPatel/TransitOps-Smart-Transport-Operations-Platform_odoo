@@ -8,7 +8,7 @@ __pycache__/
 # db.sqlite3
 
 # Portable Git
-mingit/
+# mingit/
 
 # Local logs
 *.log
