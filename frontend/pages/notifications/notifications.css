@@ -1,0 +1,153 @@
+/* TransitOps - Notifications Stylesheet */
+
+.notifications-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 10px;
+}
+
+.notification-card {
+  display: flex;
+  flex-direction: column;
+  padding: 16px 20px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-left: 5px solid var(--text-muted);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+  position: relative;
+}
+
+.notification-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+
+.notification-card.unread {
+  background: #F8FAFC;
+  border-left-color: var(--accent);
+}
+
+/* Color Coding based on Type */
+.notification-card[data-type="Insurance Expiry"] {
+  border-left-color: var(--danger);
+}
+.notification-card[data-type="License Expiry"] {
+  border-left-color: var(--danger);
+}
+.notification-card[data-type="Maintenance Due"] {
+  border-left-color: var(--warning);
+}
+.notification-card[data-type="Trip Completed"] {
+  border-left-color: var(--success);
+}
+.notification-card[data-type="Trip Cancelled"] {
+  border-left-color: #64748B;
+}
+.notification-card[data-type="Fuel Alerts"] {
+  border-left-color: #0284C7;
+}
+
+.notification-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.notification-title-block {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.notification-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+}
+
+/* Icon backgrounds */
+.notification-card[data-type="Insurance Expiry"] .notification-icon {
+  background: var(--danger-bg);
+  color: var(--danger);
+}
+.notification-card[data-type="License Expiry"] .notification-icon {
+  background: var(--danger-bg);
+  color: var(--danger);
+}
+.notification-card[data-type="Maintenance Due"] .notification-icon {
+  background: var(--warning-bg);
+  color: var(--warning);
+}
+.notification-card[data-type="Trip Completed"] .notification-icon {
+  background: var(--success-bg);
+  color: var(--success);
+}
+.notification-card[data-type="Trip Cancelled"] .notification-icon {
+  background: #F1F5F9;
+  color: #64748B;
+}
+.notification-card[data-type="Fuel Alerts"] .notification-icon {
+  background: #E0F2FE;
+  color: #0284C7;
+}
+
+.notification-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.notification-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.notification-body {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+}
+
+.notification-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.badge-unread {
+  display: inline-block;
+  padding: 2px 6px;
+  font-size: 9px;
+  font-weight: 700;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+.btn-notif-action {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  border-radius: 4px;
+  transition: var(--transition);
+}
+
+.btn-notif-action:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}

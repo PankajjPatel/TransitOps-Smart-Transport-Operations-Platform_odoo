@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TransitOps - System Configurations</title>
+  <link rel="stylesheet" href="../../shared/shared.css">
+  <link rel="stylesheet" href="settings.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+  <div id="toast-container" class="toast-container"></div>
+  <div class="app-container">
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <i data-lucide="navigation" style="width:24px;height:24px;"></i>
+        <span class="sidebar-brand">TransitOps</span>
+      </div>
+      <ul class="sidebar-menu">
+        <li class="sidebar-item"><a class="sidebar-link" data-page="dashboard" href="../dashboard/dashboard.html"><i data-lucide="layout-dashboard"></i><span>Dashboard</span></a></li>
+        <li class="sidebar-item"><a class="sidebar-link" data-page="vehicles" href="../vehicles/vehicles.html"><i data-lucide="truck"></i><span>Vehicles</span></a></li>
+        <li class="sidebar-item"><a class="sidebar-link" data-page="drivers" href="../drivers/drivers.html"><i data-lucide="users"></i><span>Drivers</span></a></li>
+        <li class="sidebar-item"><a class="sidebar-link" data-page="trips" href="../trips/trips.html"><i data-lucide="route"></i><span>Trips</span></a></li>
+        <li class="sidebar-item"><a class="sidebar-link" data-page="maintenance" href="../maintenance/maintenance.html"><i data-lucide="wrench"></i><span>Maintenance</span></a></li>
+        <li class="sidebar-item"><a class="sidebar-link" data-page="fuel" href="../fuel/fuel.html"><i data-lucide="droplet"></i><span>Fuel Logs</span></a></li>
+        <li class="sidebar-item"><a class="sidebar-link" data-page="expenses" href="../expenses/expenses.html"><i data-lucide="banknote"></i><span>Expenses</span></a></li>
+        <li class="sidebar-item"><a class="sidebar-link" data-page="reports" href="../reports/reports.html"><i data-lucide="bar-chart-3"></i><span>Reports & Analytics</span></a></li>
+        <li class="sidebar-item"><a class="sidebar-link active" data-page="settings" href="../settings/settings.html"><i data-lucide="settings"></i><span>Settings</span></a></li>
+      </ul>
+      <div class="sidebar-footer"><span>TransitOps ERP v1.0</span></div>
+    </aside>
+    <main class="main-wrapper">
+      <header class="top-header">
+        <div class="header-title-container">
+          <i data-lucide="settings" class="page-title-icon" id="header-icon"></i>
+          <h1 class="page-title" id="header-title">System Configurations</h1>
+        </div>
+        <div class="header-actions">
+          <button class="btn-icon" title="Notifications" id="btn-notifications"><i data-lucide="bell"></i></button>
+          <div class="header-user-info">
+            <div class="user-avatar" id="user-avatar-initials">GA</div>
+            <div class="user-meta">
+              <span class="user-name" id="header-user-name">Girjesh Adarsh</span>
+              <span class="user-role" id="header-user-role">Administrator</span>
+            </div>
+          </div>
+          <button class="btn-icon" title="Log Out" id="btn-logout"><i data-lucide="log-out"></i></button>
+        </div>
+      </header>
+      <div id="page-settings" class="page-container active">
+        <div style="max-width: 800px; margin: 0 auto; width: 100%; display: flex; flex-direction: column; gap: 24px;">
+          
+          <!-- GENERAL Section -->
+          <div class="card" style="padding: 24px;">
+            <h3 style="font-size: 14px; font-weight: 700; color: var(--text-color); margin-bottom: 20px; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid var(--border-color); padding-bottom: 8px;">General</h3>
+            <form id="form-settings-general">
+              <div class="form-group" style="margin-bottom: 16px;">
+                <label class="form-label" style="font-weight: 600; text-transform: uppercase; font-size: 11px; color: var(--text-muted);">Depot Name</label>
+                <input type="text" class="form-control" id="settings-platform-name" value="Gandhinagar Depot GJ14" required>
+              </div>
+              <div class="form-group-row" style="display: flex; gap: 12px; margin-bottom: 20px;">
+                <div class="form-group" style="flex: 1;">
+                  <label class="form-label" style="font-weight: 600; text-transform: uppercase; font-size: 11px; color: var(--text-muted);">Currency</label>
+                  <select class="form-control" id="settings-currency">
+                    <option value="INR" selected>INR (Rs)</option>
+                    <option value="USD">USD ($)</option>
+                    <option value="EUR">EUR (€)</option>
+                  </select>
+                </div>
+                <div class="form-group" style="flex: 1;">
+                  <label class="form-label" style="font-weight: 600; text-transform: uppercase; font-size: 11px; color: var(--text-muted);">Distance Unit</label>
+                  <select class="form-control" id="settings-timezone">
+                    <option value="GMT+5:30" selected>Kilometers</option>
+                    <option value="GMT+0">Miles</option>
+                  </select>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary" style="background-color: #3b82f6; color: white; border: none; font-weight: 600; padding: 10px 24px; border-radius: 8px;">Save changes</button>
+            </form>
+          </div>
+
+          <!-- EMAIL (SMTP) Section -->
+          <div class="card" style="padding: 24px;">
+            <h3 style="font-size: 14px; font-weight: 700; color: var(--text-color); margin-bottom: 20px; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid var(--border-color); padding-bottom: 8px;">Email (SMTP) Configuration</h3>
+            <form id="form-settings-email">
+              <div class="form-group-row" style="display: flex; gap: 12px; margin-bottom: 12px;">
+                <div class="form-group" style="flex: 2;">
+                  <label class="form-label" style="font-size: 11px; font-weight: 600; text-transform: uppercase; color: var(--text-muted);">SMTP Host</label>
+                  <input type="text" class="form-control" id="settings-smtp-host" placeholder="smtp.gmail.com" required>
+                </div>
+                <div class="form-group" style="flex: 1;">
+                  <label class="form-label" style="font-size: 11px; font-weight: 600; text-transform: uppercase; color: var(--text-muted);">SMTP Port</label>
+                  <input type="number" class="form-control" id="settings-smtp-port" placeholder="587" required>
+                </div>
+              </div>
+              <div class="form-group-row" style="display: flex; gap: 12px; margin-bottom: 12px;">
+                <div class="form-group" style="flex: 1;">
+                  <label class="form-label" style="font-size: 11px; font-weight: 600; text-transform: uppercase; color: var(--text-muted);">SMTP User</label>
+                  <input type="text" class="form-control" id="settings-smtp-user" placeholder="user@gmail.com" required>
+                </div>
+                <div class="form-group" style="flex: 1;">
+                  <label class="form-label" style="font-size: 11px; font-weight: 600; text-transform: uppercase; color: var(--text-muted);">SMTP Password</label>
+                  <input type="password" class="form-control" id="settings-smtp-pass" placeholder="••••••••" required>
+                </div>
+              </div>
+              <div class="form-group" style="margin-bottom: 16px;">
+                <label class="form-label" style="font-size: 11px; font-weight: 600; text-transform: uppercase; color: var(--text-muted);">Sender Email Address</label>
+                <input type="email" class="form-control" id="settings-smtp-sender" placeholder="ops@transitops.in" required>
+              </div>
+              <div class="form-group" style="display: flex; align-items: center; gap: 10px; margin-bottom: 20px;">
+                <input type="checkbox" id="settings-smtp-tls" style="width: 16px; height: 16px; cursor: pointer;">
+                <label for="settings-smtp-tls" style="font-weight: 500; cursor: pointer; font-size: 13px;">Use Secure Protocol (TLS)</label>
+              </div>
+              <div style="display: flex; gap: 12px;">
+                <button type="submit" class="btn btn-primary" style="background-color: #3b82f6; color: white; border: none; font-weight: 600; padding: 10px 20px; border-radius: 8px;">Save SMTP</button>
+                <button type="button" class="btn btn-secondary" id="btn-test-email" style="font-weight: 600; padding: 10px 20px; border-radius: 8px;">
+                  <i data-lucide="send" style="width:14px; height:14px; vertical-align:middle; margin-right:4px;"></i> Test Email
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <!-- SECURITY & BACKUP Section -->
+          <div class="card" style="padding: 24px;">
+            <h3 style="font-size: 14px; font-weight: 700; color: var(--text-color); margin-bottom: 20px; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid var(--border-color); padding-bottom: 8px;">Security & Backup</h3>
+            <form id="form-settings-security" style="margin-bottom: 20px;">
+              <div class="form-group-row" style="display: flex; gap: 12px; margin-bottom: 12px;">
+                <div class="form-group" style="flex: 1;">
+                  <label class="form-label" style="font-size: 11px; font-weight: 600; text-transform: uppercase; color: var(--text-muted);">Current Password</label>
+                  <input type="password" class="form-control" id="settings-security-old" required>
+                </div>
+                <div class="form-group" style="flex: 1;">
+                  <label class="form-label" style="font-size: 11px; font-weight: 600; text-transform: uppercase; color: var(--text-muted);">New Password</label>
+                  <input type="password" class="form-control" id="settings-security-new" required>
+                </div>
+              </div>
+              <div class="form-group" style="margin-bottom: 16px;">
+                <label class="form-label" style="font-size: 11px; font-weight: 600; text-transform: uppercase; color: var(--text-muted);">Confirm Password</label>
+                <input type="password" class="form-control" id="settings-security-confirm" required>
+              </div>
+              <button type="submit" class="btn btn-primary" style="background-color: #3b82f6; color: white; border: none; font-weight: 600; padding: 10px 20px; border-radius: 8px;">Change Password</button>
+            </form>
+            <div style="border-top: 1px solid var(--border-color); padding-top: 16px; display: flex; justify-content: space-between; align-items: center;">
+              <div>
+                <div style="font-weight: 600; font-size: 13px; color: var(--text-color);">Database Export Backup</div>
+                <div style="font-size: 11px; color: var(--text-muted);" id="settings-backup-last-date-display">Last backup: Never</div>
+              </div>
+              <button type="button" class="btn btn-secondary" id="btn-trigger-backup" style="font-weight: 600; padding: 8px 16px; border-radius: 8px;">Trigger Backup</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </main>
+  </div>
+  <script src="../../shared/shared.js"></script>
+  <script src="settings.js"></script>
+</body>
+</html>

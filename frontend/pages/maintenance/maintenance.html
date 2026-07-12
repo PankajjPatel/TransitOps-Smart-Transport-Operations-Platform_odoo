@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TransitOps - Maintenance Logbook</title>
+  <link rel="stylesheet" href="../../shared/shared.css">
+  <link rel="stylesheet" href="maintenance.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+  <div id="toast-container" class="toast-container"></div>
+  <div class="app-container">
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <i data-lucide="navigation" style="width:24px;height:24px;"></i>
+      <span class="sidebar-brand">TransitOps</span>
+    </div>
+    <ul class="sidebar-menu">
+      <li class="sidebar-item"><a class="sidebar-link" data-page="dashboard" href="../dashboard/dashboard.html"><i data-lucide="layout-dashboard"></i><span>Dashboard</span></a></li>
+      <li class="sidebar-item"><a class="sidebar-link" data-page="vehicles" href="../vehicles/vehicles.html"><i data-lucide="truck"></i><span>Vehicles</span></a></li>
+      <li class="sidebar-item"><a class="sidebar-link" data-page="drivers" href="../drivers/drivers.html"><i data-lucide="users"></i><span>Drivers</span></a></li>
+      <li class="sidebar-item"><a class="sidebar-link" data-page="trips" href="../trips/trips.html"><i data-lucide="route"></i><span>Trips</span></a></li>
+      <li class="sidebar-item"><a class="sidebar-link" data-page="maintenance" href="../maintenance/maintenance.html"><i data-lucide="wrench"></i><span>Maintenance</span></a></li>
+      <li class="sidebar-item"><a class="sidebar-link" data-page="fuel" href="../fuel/fuel.html"><i data-lucide="droplet"></i><span>Fuel Logs</span></a></li>
+      <li class="sidebar-item"><a class="sidebar-link" data-page="expenses" href="../expenses/expenses.html"><i data-lucide="banknote"></i><span>Expenses</span></a></li>
+      <li class="sidebar-item"><a class="sidebar-link" data-page="reports" href="../reports/reports.html"><i data-lucide="bar-chart-3"></i><span>Reports & Analytics</span></a></li>
+      <li class="sidebar-item"><a class="sidebar-link" data-page="settings" href="../settings/settings.html"><i data-lucide="settings"></i><span>Settings</span></a></li>
+    </ul>
+    <div class="sidebar-footer"><span>TransitOps ERP v1.0</span></div>
+  </aside>
+    <main class="main-wrapper">
+  <header class="top-header">
+    <div class="header-title-container">
+      <i data-lucide="wrench" class="page-title-icon" id="header-icon"></i>
+      <h1 class="page-title" id="header-title">Maintenance Logbook</h1>
+    </div>
+    <div class="header-actions">
+      <button class="btn-icon" title="Notifications" id="btn-notifications"><i data-lucide="bell"></i></button>
+      <div class="header-user-info">
+        <div class="user-avatar" id="user-avatar-initials">GA</div>
+        <div class="user-meta">
+          <span class="user-name" id="header-user-name">Girjesh Adarsh</span>
+          <span class="user-role" id="header-user-role">Administrator</span>
+        </div>
+      </div>
+      <button class="btn-icon" title="Log Out" id="btn-logout"><i data-lucide="log-out"></i></button>
+    </div>
+  </header>
+      <div id="page-maintenance" class="page-container active">
+        <div class="table-header-controls">
+          <div class="search-filter-group">
+            <div class="input-container-search">
+              <i data-lucide="search"></i>
+              <input type="text" class="input-search" id="maintenance-search" placeholder="Search vehicle, description...">
+            </div>
+            <select class="select-filter" id="maintenance-filter-status"><option value="ALL">All Statuses</option><option value="PENDING">Pending</option><option value="IN_PROGRESS">In Progress</option><option value="COMPLETED">Completed</option></select>
+          </div>
+          <button class="btn btn-primary" id="btn-add-maintenance">
+            <i data-lucide="plus"></i> Add Maintenance Record
+          </button>
+        </div>
+        <div class="table-wrapper">
+          <table class="custom-table" id="maintenance-table">
+            <thead></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+        <div class="pagination-container" id="maintenance-pagination"></div>
+      </div>
+    </main>
+  </div>
+
+  <!-- CRUD MODAL -->
+  <div id="modal-container" class="modal-overlay">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="modal-title">Form Title</h3>
+        <button class="btn-icon" style="border:none;" onclick="closeModal()"><i data-lucide="x"></i></button>
+      </div>
+      <form id="modal-form">
+        <div class="modal-body" id="modal-body"></div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" onclick="closeModal()">Cancel</button>
+          <button type="submit" class="btn btn-primary" id="btn-modal-submit">Save changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <!-- DETAILS MODAL -->
+  <div id="details-modal-container" class="modal-overlay">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="details-modal-title">Record Details</h3>
+        <button class="btn-icon" style="border:none;" onclick="closeDetailsModal()"><i data-lucide="x"></i></button>
+      </div>
+      <div class="modal-body" id="details-modal-body"></div>
+      <div class="modal-footer"><button type="button" class="btn btn-primary" onclick="closeDetailsModal()">Close</button></div>
+    </div>
+  </div>
+  <!-- DELETE MODAL -->
+  <div id="delete-modal-container" class="modal-overlay">
+    <div class="modal-content" style="max-width:400px;">
+      <div class="modal-header">
+        <h3 class="modal-title">Confirm Deletion</h3>
+        <button class="btn-icon" style="border:none;" onclick="closeDeleteModal()"><i data-lucide="x"></i></button>
+      </div>
+      <div class="modal-body">
+        <p style="margin-bottom:12px;font-weight:500;">Are you sure you want to permanently delete this item?</p>
+        <p style="font-size:12px;color:var(--text-muted);">This action is permanent and cannot be undone.</p>
+        <div id="delete-item-display" style="margin-top:14px;padding:10px;border:1px solid var(--border-color);border-radius:6px;font-weight:600;text-align:center;background-color:var(--bg-hover);">Item Details</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" onclick="closeDeleteModal()">Cancel</button>
+        <button type="button" class="btn btn-primary" id="btn-delete-confirm">Delete Item</button>
+      </div>
+    </div>
+  </div>
+  <script src="../../shared/shared.js"></script>
+  <script src="maintenance.js"></script>
+</body>
+</html>
