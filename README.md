@@ -1,24 +1,24 @@
-# 🚛 TransitOps – Smart Transport Operations Platform
+#  TransitOps – Smart Transport Operations Platform
 
 TransitOps is a smart transport operations management platform designed to simplify fleet and logistics management for transport companies. It helps organizations manage vehicles, drivers, trips, fuel, maintenance, expenses, and reports through a centralized dashboard.
 
-## ✨ Features
+##  Features
 
-- 🔐 Role-Based Authentication
-- 🚛 Vehicle Management
-- 👨‍✈️ Driver Management
-- 🛣️ Trip Management
-- ⛽ Fuel Tracking
-- 🔧 Maintenance Management
-- 💰 Expense Management
-- 📊 Reports & Analytics
-- 🔔 Notifications & Email Alerts
-- 📈 Real-time Dashboard
-- 🔍 Search, Filter & Pagination
+-  Role-Based Authentication
+-  Vehicle Management
+-  Driver Management
+-  Trip Management
+-  Fuel Tracking
+-  Maintenance Management
+-  Expense Management
+-  Reports & Analytics
+-  Notifications & Email Alerts
+-  Real-time Dashboard
+-  Search, Filter & Pagination
 
 ---
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 - **Language:** Python 3.12
 - **Framework:** Django 5.x
@@ -33,7 +33,7 @@ TransitOps is a smart transport operations management platform designed to simpl
 
 ---
 
-## 📂 Project Structure
+##  Project Structure
 
 ```text
 TransitOps/
@@ -47,7 +47,7 @@ TransitOps/
 
 ---
 
-## 🚀 Installation
+##  Installation
 
 ```bash
 git clone <repository-url>
@@ -67,7 +67,7 @@ python manage.py runserver
 
 ---
 
-## 👥 Team Members
+##  Team Members
 
 - **Pankaj Patel**
 - **Uday Verma**
@@ -76,7 +76,7 @@ python manage.py runserver
 
 ---
 
-## 📌 Project Modules
+##  Project Modules
 
 - Authentication
 - Dashboard
@@ -92,6 +92,6 @@ python manage.py runserver
 
 ---
 
-## 📄 License
+##  License
 
 This project was developed as part of a Hackathon for educational and demonstration purposes.
